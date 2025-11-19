@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	This is Group1's master
+<a href="login.do">로그인 페이지 이동</a>
 </body>
 </html>
