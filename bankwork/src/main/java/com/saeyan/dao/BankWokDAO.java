@@ -24,7 +24,7 @@ public int accountInsert(AccountInofoVO vo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "insert into accountinfo(account, name, balance)"
-				+ " values(?, ?, ?, ? )";
+				+ " values(?, ?, ? )";
 		
 		try {
 			
