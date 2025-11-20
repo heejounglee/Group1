@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Team 1's BankWork</title>
 </head>
 <body>
 <a href="login.do">로그인 페이지 이동</a>
