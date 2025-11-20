@@ -7,7 +7,7 @@
 }
 
 h1 {
-	color: rgb(234, 208, 185); /* 글 색상 */
+	color: rgb(0, 0, 160); /* 글 색상 */
 }
 
 table {
@@ -23,7 +23,7 @@ table td,th {
 }
 
 th {
-	background: yellowgreen; /* 배경색 */
+	background: rgb(254, 208, 203); /* 배경색 */
 }
 
 img {
