@@ -33,12 +33,12 @@ public class MemberDAO {
 		
 		try {
 			//드라이브 로드
-			Class.forName("oracle.jdbc.driver.OracleDriver"); 
+			Class.forName("com.mysql.cj.jdbc.Driver"); 
 			
 			// 연결 정보
 			con = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:xe",
-					"test",
+					"jdbc:mysql://localhost:3306/edudb?serverTimezone=Asia/Seoul",
+					"jdbctest",
 					"1234"
 					); 
 		}catch(Exception e) {
