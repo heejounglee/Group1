@@ -12,7 +12,7 @@ create table accountinfo (
  status varchar(30)		
 );
  */
-public class AccountInofoVO {
+public class AccountInfoVO {
 
 	private int num;
 	private String account;

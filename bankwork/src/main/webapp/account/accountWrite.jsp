@@ -33,11 +33,8 @@
 					<th>입금액</th>
 					<td><input type="text" name="balance"> 원</td>
 				</tr>
-				<tr>
-					<th>계좌상태</th>
-					<td><input type="text" name="status" size="80"></td>
-				</tr>
 			</table>
+			<input type="hidden" name="status" size="80" readonly value="정상">
 			<br> 
 			<input type="submit" value="등록" onclick="return accountCheck()"> 
             <input type="reset" 	value="다시작성"> 
