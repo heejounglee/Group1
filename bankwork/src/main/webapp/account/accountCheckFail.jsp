@@ -4,13 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>오류 발생</title>
+<title>계좌 등록 실패</title>
 </head>
 <body>
-    <h2>오류 발생</h2>
+    <h2>계좌 등록 실패</h2>
+    <h3>${loginUser.name}(${loginUser.userid})님</h3>
+    <form id='returnForm' action="login.do" method="post" name="frm">
+    <input type="hidden" name="userid" value="${loginUser.userid}">
+    <input type="hidden" name="pwd" value="${pwd}">
     <p>
-        ${requestScope.message} 
+       <%= request.getAttribute("errorMessage") %>
     </p>
-    <a href="index.jsp">홈으로 돌아가기</a>
+    <a href="#" onclick="javascript: document.getElementById('returnForm').submit()">홈으로 돌아가기</a>
+    
+    </form>
 </body>
 </html>

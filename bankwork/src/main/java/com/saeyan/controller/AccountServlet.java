@@ -2,7 +2,6 @@ package com.saeyan.controller;
 
 import java.io.IOException;
 import java.net.URLEncoder;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,19 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mysql.cj.exceptions.MysqlErrorNumbers;
 import com.saeyan.dao.BankWokDAO;
+import com.saeyan.dao.MemberDAO;
 import com.saeyan.dto.AccountInfoVO;
 import com.saeyan.dto.MemberVO;
-import util.DuplicateUserIdException;
 
-@WebServlet(urlPatterns = {"/accountWrite.do", "/accountView.do"})
+@WebServlet(urlPatterns = {"/accountWrite.do", "/accountView.do","/test.do"})
 public class AccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public AccountServlet() {
-    }
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String servletPath = request.getServletPath(); // 요청된 실제 서블릿 경로를 가져오기
@@ -38,11 +33,13 @@ public class AccountServlet extends HttpServlet {
         	System.out.println("등록된 계좌 보기");
         	
         	doPost(request, response);
+        } else {
+        	doPost(request,response);
         }
         
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		 String servletPath = request.getServletPath(); // 요청된 실제 서블릿 경로를 가져오기
 		
@@ -52,9 +49,10 @@ public class AccountServlet extends HttpServlet {
 		 MemberVO mvo =  (MemberVO) session.getAttribute("loginUser");
 		 
 		 BankWokDAO dao = BankWokDAO.getInstance();
-		 
+		 MemberDAO mdao = MemberDAO.getInstance();
 		 
 		 if ("/accountWrite.do".equals(servletPath)) {
+			 int result = -1;
 			 String account = request.getParameter("account");
 			 String name = request.getParameter("name");
 			 String alias = request.getParameter("alias");
@@ -62,40 +60,41 @@ public class AccountServlet extends HttpServlet {
 			 long balance = Long.parseLong(request.getParameter("balance"));
 			 String status = request.getParameter("status");
 			 String userid = mvo.getUserid();
-			 int result =  -1;
 			 
 			 AccountInfoVO vo = new AccountInfoVO();
 			 vo.setAccount(account);
 			 vo.setName(name);
 			 vo.setAlias(alias);
-			 vo.setUserid(userid);
 			 vo.setPhone(phone);
 			 vo.setBalance(balance);
 			 vo.setStatus(status);
+			 vo.setUserid(userid);
 			 
 			 try {
 				 
-				 result = dao.accountInsert(vo);
+				 mvo = mdao.getMember(userid);
 				 
+				 result = dao.accountInsert(vo);
 				 
 			 } catch (Exception e) {
 				 
 				 e.printStackTrace();
 				 
-				 String errorMessage = "계좌 등록이 실패되었습니다. 다시 시도해주세요.";
-				 
-				 request.setAttribute("message", errorMessage);
-		         request.getRequestDispatcher("accountCheckFail.jsp").forward(request, response);
-		            
-			        
-				 
 			 } finally {
-				 if (result == 1) {
-					 request.setAttribute("message", "계좌 등록이 완료되었습니다.");
-					 response.sendRedirect("accountView.do?account=" + URLEncoder.encode(account, "UTF-8"));
-					 
-				 } 
-			 }
+				 
+	             if (result > 0) {
+	            	 request.setAttribute("message", "계좌 등록이 완료되었습니다.");
+	         		 response.sendRedirect("accountView.do?account=" + URLEncoder.encode(account, "UTF-8"));
+	             } else {
+	            	 request.setAttribute("pwd", mvo.getPwd());
+	            	 request.setAttribute("errorMessage", "계좌 등록이 실패되었습니다. - 은행계좌를 확인해주세요.");
+			         request.getRequestDispatcher("/account/accountCheckFail.jsp").forward(request, response);
+	            	 
+	             }
+	             
+	         }
+			
+			 
 		 } else if ("/accountView.do".equals(servletPath)) {
 			 
 			 String account = request.getParameter("account");
@@ -104,8 +103,7 @@ public class AccountServlet extends HttpServlet {
 			
 			 request.setAttribute("account", vo);
 			 request.getRequestDispatcher("/account/accountView.jsp").forward(request, response);
-		 }
-		 
+		 } 
 		 
 	}
 
