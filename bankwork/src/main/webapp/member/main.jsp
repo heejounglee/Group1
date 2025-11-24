@@ -24,10 +24,8 @@
 					<input type="submit" value="로그아웃"> &nbsp;&nbsp;
 					<input type="button" value="회원정보변경"
 					onclick="location.href='memberUpdate.do?userid=${loginUser.userid}'">
-					<input type="button" value="거래내역조회"
-					onclick="location.href='depositList.do?userid=${loginUser.userid}'">
 					<input type="button" value="내계좌 정보"
-					onclick="location.href='accountWrite.do'">
+					onclick="location.href='accountList.do?userid=${loginUser.userid}'">
 				</td>
 			</tr>
 		</table>

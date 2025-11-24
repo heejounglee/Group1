@@ -1,5 +1,7 @@
 package com.saeyan.dto;
 
+import java.security.Timestamp;
+
 /* 
  create table depositinfo (
  num int auto_increment primary key,
@@ -18,7 +20,7 @@ public class DepositInfoVO {
 	private int num;
 	private String account;
 	private String name;
-	private String depositdate;
+	private java.sql.Timestamp depositdate;
 	private String flag;
 	private long money;
 	private long balance;
@@ -42,11 +44,11 @@ public class DepositInfoVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDepositdate() {
+	public java.sql.Timestamp getDepositdate() {
 		return depositdate;
 	}
-	public void setDepositdate(String depositdate) {
-		this.depositdate = depositdate;
+	public void setDepositdate(java.sql.Timestamp timestamp) {
+		this.depositdate = timestamp;
 	}
 	public String getFlag() {
 		return flag;
@@ -72,5 +74,6 @@ public class DepositInfoVO {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+	
 
 }

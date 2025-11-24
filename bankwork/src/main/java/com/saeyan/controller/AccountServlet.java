@@ -15,7 +15,7 @@ import com.saeyan.dao.MemberDAO;
 import com.saeyan.dto.AccountInfoVO;
 import com.saeyan.dto.MemberVO;
 
-@WebServlet(urlPatterns = {"/accountWrite.do", "/accountView.do","/test.do"})
+@WebServlet(urlPatterns = {"/accountWrite.do", "/accountView.do"})
 public class AccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,6 +26,13 @@ public class AccountServlet extends HttpServlet {
 		// 요청된 URL 패턴에 따라 분기 처리
         if ("/accountWrite.do".equals(servletPath)) {
         	System.out.println("계좌등록 페이지 요청");
+        	
+        	request.setCharacterEncoding("utf-8");
+   		 
+   		 	HttpSession session = request.getSession();
+   		 	MemberVO mvo =  (MemberVO) session.getAttribute("loginUser");
+   		 	request.setAttribute("name", mvo.getName());
+   		 	
         	request.getRequestDispatcher("account/accountWrite.jsp")
 			.forward(request, response);
             

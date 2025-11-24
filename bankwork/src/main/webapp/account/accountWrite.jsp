@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<th>*예금주명</th>
-					<td colspan="3"><input type="text" name="name" size="80"></td>
+					<td colspan="3"><input type="text" name="name" size="80" style="background-color: lightgray;" value='${name}' readonly></td>
 				</tr>
 				<tr>
 					<th>계좌별명</th>
