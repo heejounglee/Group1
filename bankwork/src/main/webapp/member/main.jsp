@@ -27,7 +27,7 @@
 					<input type="button" value="거래내역조회"
 					onclick="location.href='depositList.do?userid=${loginUser.userid}'">
 					<input type="button" value="내계좌 정보"
-					onclick="location.href='accountList.do?userid=${loginUser.userid}'">
+					onclick="location.href='accountWrite.do'">
 				</td>
 			</tr>
 		</table>

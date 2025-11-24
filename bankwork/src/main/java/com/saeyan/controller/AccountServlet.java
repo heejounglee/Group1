@@ -53,7 +53,7 @@ public class AccountServlet extends HttpServlet {
 		 
 		 if ("/accountWrite.do".equals(servletPath)) {
 			 int result = -1;
-			 String account = request.getParameter("account");
+			 String account = request.getParameter("acct1")+"-"+request.getParameter("acct2")+"-"+request.getParameter("acct3");
 			 String name = request.getParameter("name");
 			 String alias = request.getParameter("alias");
 			 String phone = request.getParameter("phone");
