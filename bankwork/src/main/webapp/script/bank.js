@@ -1,21 +1,44 @@
 function accountCheck() {
-	if (document.frm.account.value.length == 0) {
-		alert("계좌번호를 써주세요");
-		frm.account.focus();
+	if (document.frm.acct1.value.length != 3 || isNaN(document.frm.acct1.value)) {
+		alert("계좌번호를 확인해주세요");
+		frm.acct1.focus();
 		return false;
 	}
+	if (document.frm.acct2.value.length != 2 || isNaN(document.frm.acct2.value)) {
+		alert("계좌번호를 확인해주세요");
+		frm.acct2.focus();
+		return false;
+	}
+	if (document.frm.acct3.value.length != 3 || isNaN(document.frm.acct3.value)) {
+		alert("계좌번호를 확인해주세요");
+		frm.acct3.focus();
+		return false;
+	}	
+	if (document.frm.name.value.length == 0) {
+		alert("예금주명을 확인해주세요");
+		frm.name.focus();
+		return false;
+	}
+	if (document.frm.alias.value.length > 10) {
+		alert("계좌별명은 10자리이내까지만 입력 가능합니다.");
+		frm.alias.focus();
+		return false;
+		}	
 	if (document.frm.phone.value.length == 0) {
-		alert("휴대폰번호를 써주세요");
+		alert("휴대폰번호를 확인해주세요");
 		frm.phone.focus();
 		return false;
 	}
-	if (document.frm.balance.value == "") {
-		alert("계좌등록시 입금액은 0원 이상 있어야 합니다.");
+	if (document.frm.balance.value.length == 0 || document.frm.balance.value <= 0 ) {
+		alert("계좌등록시 입금액은 1원 이상 하셔야 합니다.");
 		frm.balance.focus();
 		return false;
 	}
+	
+	
 	return true;
 }
+
 
 /*
 function idCheck() {

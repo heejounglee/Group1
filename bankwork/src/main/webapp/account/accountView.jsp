@@ -12,7 +12,7 @@
 </head>
 <body>
    <div id="wrap" align="center">
-      <h1>계좌 상세 보기</h1>
+      <h1>계좌 등록 완료</h1>
       <table>
          <tr>
             <th>계좌번호</th>
