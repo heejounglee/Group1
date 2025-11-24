@@ -9,13 +9,13 @@ import com.saeyan.dto.AccountInfoVO;
 
 import util.DBManager;
 
-public class BankWokDAO {
+public class BankWorkDAO {
 	
-	private static BankWokDAO instance = new BankWokDAO();
+	private static BankWorkDAO instance = new BankWorkDAO();
 	
-	private BankWokDAO() {}
+	private BankWorkDAO() {}
 	
-	public static BankWokDAO getInstance() {
+	public static BankWorkDAO getInstance() {
 		return instance;
 	}
 	

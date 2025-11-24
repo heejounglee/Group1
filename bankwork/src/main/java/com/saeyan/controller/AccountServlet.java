@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.saeyan.dao.BankWokDAO;
+import com.saeyan.dao.BankWorkDAO;
 import com.saeyan.dao.MemberDAO;
 import com.saeyan.dto.AccountInfoVO;
 import com.saeyan.dto.MemberVO;
@@ -48,7 +48,7 @@ public class AccountServlet extends HttpServlet {
 		 HttpSession session = request.getSession();
 		 MemberVO mvo =  (MemberVO) session.getAttribute("loginUser");
 		 
-		 BankWokDAO dao = BankWokDAO.getInstance();
+		 BankWorkDAO dao = BankWorkDAO.getInstance();
 		 MemberDAO mdao = MemberDAO.getInstance();
 		 
 		 if ("/accountWrite.do".equals(servletPath)) {
