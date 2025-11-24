@@ -15,6 +15,15 @@ package com.saeyan.dto;
  */
 public class DepositInfoVO {
 	
+	private int num;
+	private String account;
+	private String name;
+	private String depositdate;
+	private String flag;
+	private long money;
+	private long balance;
+	private String memo;
+	
 	public int getNum() {
 		return num;
 	}
@@ -33,11 +42,11 @@ public class DepositInfoVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDepoistdate() {
-		return depoistdate;
+	public String getDepositdate() {
+		return depositdate;
 	}
-	public void setDepoistdate(String depoistdate) {
-		this.depoistdate = depoistdate;
+	public void setDepositdate(String depositdate) {
+		this.depositdate = depositdate;
 	}
 	public String getFlag() {
 		return flag;
@@ -63,13 +72,5 @@ public class DepositInfoVO {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
-	private int num;
-	private String account;
-	private String name;
-	private String depoistdate;
-	private String flag;
-	private long money;
-	private long balance;
-	private String memo;
 
 }
