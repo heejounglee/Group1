@@ -13,6 +13,7 @@ public class BankWorkDAO {
 	
 	private static BankWorkDAO instance = new BankWorkDAO();
 	
+	//생성자
 	private BankWorkDAO() {}
 	
 	public static BankWorkDAO getInstance() {
