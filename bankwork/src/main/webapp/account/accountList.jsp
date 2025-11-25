@@ -13,8 +13,6 @@
 <body>
    <div id="wrap" align="center">
       <h1>내계좌 정보</h1>
-      <input type="button" value="계좌 등록" onclick="location.href='accountWrite.do'">
-      <br>
       <table>
          <tr>
             <th>계좌번호</th>
