@@ -39,6 +39,11 @@
 		<td><input type="number" name="money" required></td>
 		</tr>
 				
+		<th>메모</th>
+        <td><textarea cols="30" rows="3" name="content">${board.content}
+        </textarea>
+        </td>
+         </tr>
 			</table>
 
 			<br> <input type="submit" value="거래실행"> <input
