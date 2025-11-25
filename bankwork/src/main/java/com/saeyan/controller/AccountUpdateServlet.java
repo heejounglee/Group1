@@ -57,6 +57,8 @@ public class AccountUpdateServlet extends HttpServlet {
         BankWorkDAO dao = BankWorkDAO.getInstance();
         dao.updateAccount(vo); // DAO 예외 처리 내부에서 하는 것이 안전
 
-        response.sendRedirect("accountList.do");
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().println("<h2>수정 완료되었습니다.</h2>");
+        response.getWriter().println("<a href='accountList.do'>내계좌정보</a>");
     }
 }

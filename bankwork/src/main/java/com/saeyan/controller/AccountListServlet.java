@@ -28,13 +28,12 @@ public class AccountListServlet extends HttpServlet {
         HttpSession session = request.getSession();
         MemberVO mvo =  (MemberVO) session.getAttribute("loginUser");
         
-        String userid = mvo.getUserid();
-        
-        if (session == null || userid == null) {
-            response.sendRedirect("/member/login.jsp");
+        if (session == null || mvo == null || mvo.getUserid() == null) {
+        	request.getRequestDispatcher("member/login.jsp").forward(request, response);
             return;
         }
 
+        String userid = mvo.getUserid();
 
         // 3. DB에서 계좌 목록 조회
         BankWorkDAO dao = BankWorkDAO.getInstance();

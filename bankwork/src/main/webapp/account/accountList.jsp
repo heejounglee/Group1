@@ -13,6 +13,9 @@
 <body>
    <div id="wrap" align="center">
       <h1>내계좌 정보</h1>
+      <input type="button" value="계좌 등록" onclick="location.href='accountWrite.do'">
+      <br>
+      <form action="accountList.do" method="POST">
       <table>
          <tr>
             <th>계좌번호</th>
@@ -25,16 +28,19 @@
          </tr>
          <c:forEach var="account" items="${accountList}">
 		 <tr class="record">
-			<td  align="center">${account.account} <input type="hidden" name="account" value='${account.account}'> </td>
+			<td  align="center">${account.account}
+			<input type="hidden" name="account" value='${account.account}'>
+			</td>
             <td  align="center">${account.alias}</td>
             <td  align="center">${account.phone}</td>
             <td  align="center">${account.status}</td>
-            <td  align="center"><button type="submit" value="수정" formaction="accountUpdate.do" formmethod="POST">조회</button></td>
-            <td  align="center"><button type="submit" value="실행" formaction="depositUpdate.do" formmethod="POST">조회</button></td>
-            <td  align="center"><button type="submit" value="조회" formaction="depositList.do" formmethod="POST">조회</button></td>
+            <td  align="center"><input type="button" value="수정" onclick="location.href='accountUpdate.do?account=${account.account}'"></td>
+            <td  align="center"><input type="button" value="실행" onclick="location.href='depositUpdate.do?account=${account.account}'"></td>
+            <td  align="center"><input type="button" value="조회" onclick="location.href='depositList.do?account=${account.account}'"></td>
 		</tr>
 		 </c:forEach>
       </table>
+      </form>
       <br><br>
    </div>
 </body>
