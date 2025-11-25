@@ -76,6 +76,7 @@ public class AccountServlet extends HttpServlet {
 			 String alias = request.getParameter("alias");
 			 String phone = request.getParameter("phone");
 			 long balance = Long.parseLong(request.getParameter("balance"));
+			 int money = Integer.parseInt(request.getParameter("balance"));
 			 String status = request.getParameter("status");
 			 String userid = mvo.getUserid();
 			 
@@ -93,6 +94,11 @@ public class AccountServlet extends HttpServlet {
 				 mvo = mdao.getMember(userid);
 				 
 				 result = dao.accountInsert(vo);
+				 
+			     BankWorkDAO bdao = BankWorkDAO.getInstance();
+			      //거래내역
+			     bdao.depositInsert(account,name, "예금", money, balance, "계좌등록");   
+			        
 				 
 			 } catch (Exception e) {
 				 

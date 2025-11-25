@@ -24,13 +24,13 @@
 			</tr>
 			<c:forEach var="deposit" items="${depositList}">
 				<tr class="record">
-					<td>${deposit.account}</td>
-					<td>${deposit.name}</td>
-					<td><fmt:formatDate value="${deposit.depositdate}" pattern="yyyy/MM/dd"/></td>
-					<td>${deposit.flag}</td>
-					<td>${deposit.money}원</td>
-					<td>${deposit.balance}원</td>
-					<td>${deposit.memo}</td>
+					<td align="center">${deposit.account}</td>
+					<td align="center">${deposit.name}</td>
+					<td align="center"><fmt:formatDate value="${deposit.depositdate}" pattern="yyyy/MM/dd HH:mm:ss"/></td>
+					<td align="center">${deposit.flag}</td>
+					<td align="right">${deposit.money}원</td>
+					<td align="right">${deposit.balance}원</td>
+					<td align="center">${deposit.memo}</td>
 				</tr>
 			</c:forEach>
 		</table>
