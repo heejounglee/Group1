@@ -16,13 +16,21 @@
 		<table>
 		<tr>
 		<th>계좌번호</th>
-		<td><input type= "text" name="account" size="80" style="background-color: lightgray;" value='${account}' readonly></td>
-		</tr>
-
+		<td>
+		<input type="text" name="account" size="80"
+		       style="background-color: lightgray; border:none; padding: 4px;"
+			   value='${account}' readonly>
+			</tr>
 		<tr>
 		<th>예금주명</th>
-		<td><input type="text" name="name" size="80" style="background-color: lightgray;" value='${name}' readonly></td>
+		<td>
+		<input type="text" name="name" size="80"
+			   style="background-color: lightgray; border:none; padding: 4px;"
+			   value='${name}' readonly>
 		</tr>
+		</table>
+		</form>
+		
 
 		<tr>
 		<th>입출금구분</th>
