@@ -22,7 +22,8 @@
 				</tr>
 				<tr>
 					<th>*예금주명</th>
-					<td colspan="3"><input type="text" name="name" size="80" style="background-color: lightgray;" value='${name}' readonly></td>
+					<td colspan="3"><input type="text" name="name" size="80" 
+					  style="background-color: lightgray; border:none; padding: 4px;" value='${name}' readonly></td>
 				</tr>
 				<tr>
 					<th>계좌별명</th>
@@ -41,7 +42,7 @@
 			<br> 
 			<input type="submit" value="등록" onclick="return accountCheck()"> 
             <input type="reset" 	value="다시작성"> 
-            <input type="button" value="목록" onclick="location.href='accountList.do'">
+            <input type="button" value="계좌목록" onclick="location.href='accountList.do'">
 		</form>
 	</div>
 </body>

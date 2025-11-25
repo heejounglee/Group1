@@ -26,6 +26,8 @@
 					onclick="location.href='memberUpdate.do?userid=${loginUser.userid}'">
 					<input type="button" value="내계좌 정보"
 					onclick="location.href='accountList.do?userid=${loginUser.userid}'">
+					<input type="button" value="계좌등록"
+					onclick="location.href='accountWrite.do'">
 				</td>
 			</tr>
 		</table>
