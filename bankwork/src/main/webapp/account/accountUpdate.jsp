@@ -18,7 +18,9 @@
          <tr>
             <th>계좌번호</th>
             <td>${accountOne.account}</td>
-            <td><input type="hidden" id="account" name="account" value="${accountOne.account}"></td>
+            <td colspan="3"><input type="text" name="name" size="80"
+			style="background-color: lightgray; border:none; padding: 4px;" value='${name}' readonly>
+			<input type="hidden" id="account" name="account" value="${accountOne.account}"></td>
          </tr>
          <tr>
             <th>계좌별명</th>
