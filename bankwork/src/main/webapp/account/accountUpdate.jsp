@@ -43,7 +43,7 @@
       </table>
       <br> <br> 
       <input type="submit" value="저장">
-      <input type="button" value="목록" onclick="location.href='accountList.do'">
+      <input type="button" value="계좌목록" onclick="location.href='accountList.do'">
 	  </form>
    </div>
 </body>
