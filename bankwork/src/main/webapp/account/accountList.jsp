@@ -9,6 +9,31 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/bank.css">
 <script type="text/javascript" src="script/board.js"></script>
+<script src="code.jquery.com"></script>
+<script>
+function sendAjaxRequest() {
+  
+   // 입력 필드의 값 가져오기
+    var accountVal = $("#account").val(); 
+
+ // AJAX 호출
+    $.ajax({
+        url: 'depositList.do', // 데이터를 보낼 서버 URL
+        type: 'POST', // 또는 'GET'
+        data: { 
+        	account: accountVal // '값 전달
+        },
+        success: function(response) {
+            // 성공 시 실행할 코드
+            alert("서버 응답: " + response);
+        },
+        error: function(xhr, status, error) {
+            // 오류 발생 시 실행할 코드
+            console.error("AJAX 오류 발생: " + status + ", " + error);
+        }
+    });
+}
+</script>
 </head>
 <body>
    <div id="wrap" align="center">
@@ -29,7 +54,7 @@
          <c:forEach var="account" items="${accountList}">
 		 <tr class="record">
 			<td  align="center">${account.account}
-			<input type="hidden" name="account" value='${account.account}'>
+			<input type="hidden" id="account" name="account" value='${account.account}'>
 			</td>
             <td  align="center">${account.alias}</td>
             <td  align="center">${account.phone}</td>

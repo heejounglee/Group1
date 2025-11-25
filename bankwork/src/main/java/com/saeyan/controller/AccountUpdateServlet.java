@@ -25,12 +25,12 @@ public class AccountUpdateServlet extends HttpServlet {
     	HttpSession session = request.getSession();
         MemberVO mvo =  (MemberVO) session.getAttribute("loginUser");
         
-        String userid = mvo.getUserid();
-        
-        if (session == null || userid == null) {
-            response.sendRedirect("/member/login.jsp");
+        if (session == null || mvo == null || mvo.getUserid() == null) {
+        	request.getRequestDispatcher("member/login.jsp").forward(request, response);
             return;
         }
+        
+        String userid = mvo.getUserid();
 
         String account = request.getParameter("account");
 

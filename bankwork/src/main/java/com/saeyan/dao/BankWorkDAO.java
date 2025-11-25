@@ -141,10 +141,10 @@ return list;
 }
 
 //거래내역 저장
-public void depositInsert(String account, String name, String flag, int money, long balance) {
+public void depositInsert(String account, String name, String flag, int money, long balance, String memo) {
 
-    String sql = "INSERT INTO depositinfo (account, name, flag, money, balance, depositdate) "
-               + "VALUES (?, ?, ?, ?, ?, current_timestamp)";
+    String sql = "INSERT INTO depositinfo (account, name, flag, money, balance, depositdate, memo) "
+               + "VALUES (?, ?, ?, ?, ?, current_timestamp, ?)";
 
     int result = -1;
 	Connection con = null;
@@ -160,6 +160,7 @@ public void depositInsert(String account, String name, String flag, int money, l
         pstmt.setString(3, flag);
         pstmt.setInt(4, money);
         pstmt.setLong(5, balance);
+        pstmt.setString(6, memo);
         pstmt.executeUpdate();
 
     }catch (Exception e) {

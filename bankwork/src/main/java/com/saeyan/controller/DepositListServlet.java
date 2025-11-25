@@ -29,6 +29,14 @@ public class DepositListServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    	HttpSession session = request.getSession();
+        MemberVO mvo =  (MemberVO) session.getAttribute("loginUser");
+        
+        if (session == null || mvo == null || mvo.getUserid() == null) {
+        	request.getRequestDispatcher("member/login.jsp").forward(request, response);
+            return;
+        }
+        
     	//1. DAO 인스턴스 가져오기 (싱글톤 패턴 사용)
     	BankWorkDAO bdao = BankWorkDAO.getInstance(); 
     	

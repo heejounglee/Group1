@@ -21,15 +21,21 @@ public class DepositServlet extends HttpServlet {
 	 
 	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 
-		 String account = request.getParameter("account");
+		String account = request.getParameter("account");
 		 
-		 HttpSession session = request.getSession();
-		 MemberVO mvo =  (MemberVO) session.getAttribute("loginUser");
-		 request.setAttribute("name", mvo.getName());
+		HttpSession session = request.getSession();
+		MemberVO mvo =  (MemberVO) session.getAttribute("loginUser");
+		 
+        if (session == null || mvo == null || mvo.getUserid() == null) {
+        	request.getRequestDispatcher("member/login.jsp").forward(request, response);
+            return;
+        }
+	        
+		request.setAttribute("name", mvo.getName());
 		 	
-		 request.setAttribute("account", account);
+		request.setAttribute("account", account);
 		 
-		 request.getRequestDispatcher("deposit/depositUpdate.jsp")
+		request.getRequestDispatcher("deposit/depositUpdate.jsp")
 			.forward(request, response);
 	 }
 	 
@@ -42,6 +48,7 @@ public class DepositServlet extends HttpServlet {
         String name = request.getParameter("name");  
         String flag = request.getParameter("flag");  
         int money = Integer.parseInt(request.getParameter("money"));
+        String memo = request.getParameter("memo");  
 
         BankWorkDAO dao = BankWorkDAO.getInstance();
        
@@ -60,7 +67,7 @@ public class DepositServlet extends HttpServlet {
         } */
         
         //거래내역
-        dao.depositInsert(account,name, flag, money, balance);
+        dao.depositInsert(account,name, flag, money, balance, memo);
 
         
         
